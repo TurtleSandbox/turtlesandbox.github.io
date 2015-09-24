@@ -23,15 +23,29 @@
       });
     </script>
     
+    <script>
+      function showContacts(type) {
+        switch(type) {
+          case github:
+            document.getElementById("show").innerHTML = '<a href="https://github.com/turtlesandbox">turtlesandbox</a>';
+            break;
+          case email:
+            document.getElementById("show").innerHTML = 'samcaccavale@gmail.com';
+            break;
+          default:
+            document.getElementById("show").innerHTML = '';
+        }
+      }
+    </script>
+    
   </head>
   <body>
     <div class="wrapper">
       <header>
         <font size="6" color="black"><b>TurtleSandbox</b></font><br/>
         Sam Caccavale<br/>
-        <img src="mug.JPG" alt="hi" class="inline"/>
-        <br/>
-        Find me on &mdash; <div onclick="getElementById('show').innerHTML='<a href="https://github.com/turtlesandbox">'">Github</div><br/>
+        <img src="mug.JPG" alt="hi" class="inline"/><br/>
+        Find me on &mdash; <div onclick="showContacts('github')">Github</div> &mdash; <div onclick="showContacts('email')">email</div><br/>
         <div id="show"/><br/>
         
         
