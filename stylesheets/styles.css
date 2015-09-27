@@ -47,6 +47,7 @@ a small {
 
 .wrapper {
   width:860px;
+  float:center;
 }
 
 blockquote {
@@ -97,6 +98,7 @@ img {
 header {
   width:270px;
   float:left;
+  position:fixed;
 }
 
 header ul {
