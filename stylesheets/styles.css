@@ -181,6 +181,11 @@ footer {
   bottom:50px;
 }
 
+canvas {
+  width:100%;
+  height:100%;
+}
+
 @media print, screen and (max-width: 960px) {
 
   div.wrapper {
