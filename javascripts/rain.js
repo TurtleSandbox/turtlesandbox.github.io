@@ -4,10 +4,10 @@ class droplet {
         this.grav = grav;
 
         this.x = Math.random() * HEIGHT;
-        this.y = -50;
+        this.y = -10;
 
         this.dx = this.wind / 2;
-        this.dy = 0;
+        this.dy = 5;
     }
 
     physics() {
@@ -91,18 +91,20 @@ class rain {
     constructor() {
         ctx.strokeStyle = "#0070DE";
 
-        this.wind = .05;
+        this.wind = .03;
         this.grav = .2;
         this.rainchance = 1;
         this.droplets = [];
         this.splashes = [];
     }
 
-    physics() {
+    grow() {
         if (Math.random() < this.rainchance) {
             this.droplets.push(new droplet(this.wind, this.grav));
         }
+    }
 
+    physics() {
         var i = 0;
         while (i < this.droplets.length) {
             if (this.droplets[i].physics() === 1) {
@@ -123,6 +125,8 @@ class rain {
                 i = i + 1;
             }
         }
+
+        return (this.droplets.length + this.splashes.length) <= 0;
     }
 
     draw() {
@@ -144,7 +148,8 @@ class rain {
     }
 
     tick() {
-        this.physics();
+        var done = this.physics();
         this.draw();
+        return done;
     }
 }
