@@ -98,10 +98,6 @@ class rain {
         this.splashes = [];
     }
 
-    poll() {
-        true;
-    }
-
     physics() {
         if (Math.random() < this.rainchance) {
             this.droplets.push(new droplet(this.wind, this.grav));
@@ -148,7 +144,6 @@ class rain {
     }
 
     tick() {
-        this.poll();
         this.physics();
         this.draw();
     }

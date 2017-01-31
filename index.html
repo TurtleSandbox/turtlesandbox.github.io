@@ -30,7 +30,7 @@
             <h2><a id="welcome" class="anchor" href="#welcome" aria-hidden="true"><span class="octicon octicon-link"></span></a>Welcome</h2>
             <div>My name is Sam, and this is my website. I am a student Northeastern University, was an intern at <a href="http://www.barkly.com/">Barkly</a>, and currently am working on a handful of personal projects. My interests include kernel development,
                 video games, and the visual arts.</div><br/>
-            <span class="clickable" onclick="loadJS('rain.js');">rain</span> - <span class="clickable" onclick="loadJS('colors.js');">colors</span>
+            <span class="clickable" onclick="loadJS('off');">off</span> - <span class="clickable" onclick="loadJS('rain.js');">rain</span> - <span class="clickable" onclick="loadJS('colors.js');">colors</span>
             <canvas id="scene" height="500" width="500"></canvas>
         </section>
         <footer>
@@ -79,6 +79,8 @@
             case "colors.js":
                 cur = new colors();
                 break;
+            case "off":
+                return;
         }
         interval = setTimeout(run, 10);
     }
