@@ -12,30 +12,14 @@
     <!--[if lt IE 9]>
         <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
     <script src="javascripts/rain.js"></script>
-
-    <script>
-        function showContacts(type) {
-            switch (type) {
-                case "github":
-                    document.getElementById("show").innerHTML = '<a href="https://github.com/turtlesandbox">turtlesandbox</a>';
-                    break;
-                case "email":
-                    document.getElementById("show").innerHTML = '<a href="mailto:samcaccavale@gmail.com">samcaccavale@gmail.com</a>';
-                    break;
-                default:
-                    document.getElementById("show").innerHTML = '<br/>';
-            }
-        }
-    </script>
 </head>
 
 <body>
     <div class="wrapper">
         <header>
             <font size="6" color="black"><b>TurtleSandbox</b></font><br/> Sam Caccavale<br/>
-            <img src="mug.JPG" alt="hi" class="inline" /><br/> Find me on &mdash; <span style="color: #39c;" onclick="showContacts('email')">email</span> &mdash; <span style="color: #39c;" onclick="showContacts('github')">github</span><br/>
+            <img src="mug.JPG" alt="hi" class="inline" /><br/> Find me on &mdash; <span class="clickable" onclick="showContacts('email')">email</span> &mdash; <span class="clickable" onclick="showContacts('github')">github</span><br/>
             <div id="show"><a href="mailto:samcaccavale@gmail.com">samcaccavale@gmail.com</a><br/></div><br/>
             <h3><a id="projects" class="anchor" href="#projects" aria-hidden="true"><span class="octicon octicon-link"></span></a>Projects</h3>
             <a href="https://github.com/brupoon/blackfork">blackfork</a> - genetic ai for blackjack in python<br/>
@@ -45,50 +29,63 @@
             <h2><a id="welcome" class="anchor" href="#welcome" aria-hidden="true"><span class="octicon octicon-link"></span></a>Welcome</h2>
             <div>My name is Sam, and this is my website. I am a student Northeastern University, was an intern at <a href="http://www.barkly.com/">Barkly</a>, and currently am working on a handful of personal projects. My interests include kernel development,
                 video games, and the visual arts.</div><br/>
-            <span onclick="loadJS('rain.js');">rain</span> - <span onclick="loadJS('colors.js');">colors</span>
+            <span class="clickable" onclick="loadJS('rain.js');">rain</span> - <span onclick="loadJS('colors.js');">colors</span>
             <canvas id="scene" height="500" width="500"></canvas>
         </section>
         <footer>
         </footer>
     </div>
-    <script src="javascripts/scale.fix.js"></script>
-    <script type="text/javascript">
-        var canvas = document.querySelector("#scene");
-        var ctx = canvas.getContext("2d");
-        var HEIGHT = document.querySelector("#scene").height;
-        var WIDTH = document.querySelector("#scene").width;
-        var cur;
-        var interval;
-        var oldJS;
-
-        window.addEventListener("resize", function() {
-            HEIGHT = document.querySelector("#scene").height;
-            WIDTH = document.querySelector("#scene").width;
-        });
-
-        function loadJS(file) {
-            if (interval) {
-                clearInterval(interval);
-                delete cur;
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-            }
-
-            switch (file) {
-                case "rain.js":
-                    cur = new rain();
-                    break;
-                case "color.js":
-                    cur = new color();
-                    break;
-            }
-            interval = setTimeout(run, 10);
-        }
-
-        function run() {
-            cur.tick();
-            interval = setTimeout(run, 10);
-        }
-    </script>
 </body>
+<script>
+    function showContacts(type) {
+        switch (type) {
+            case "github":
+                document.getElementById("show").innerHTML = '<a href="https://github.com/caccavale">caccavale</a>';
+                break;
+            case "email":
+                document.getElementById("show").innerHTML = '<a href="mailto:samcaccavale@gmail.com">samcaccavale@gmail.com</a>';
+                break;
+            default:
+                document.getElementById("show").innerHTML = '<br/>';
+        }
+    }
+</script>
+<script type="text/javascript">
+    var canvas = document.querySelector("#scene");
+    var ctx = canvas.getContext("2d");
+    var HEIGHT = document.querySelector("#scene").height;
+    var WIDTH = document.querySelector("#scene").width;
+    var cur;
+    var interval;
+    var oldJS;
+
+    window.addEventListener("resize", function() {
+        HEIGHT = document.querySelector("#scene").height;
+        WIDTH = document.querySelector("#scene").width;
+    });
+
+    function loadJS(file) {
+        if (interval) {
+            clearInterval(interval);
+            delete cur;
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+
+        switch (file) {
+            case "rain.js":
+                cur = new rain();
+                break;
+            case "color.js":
+                cur = new color();
+                break;
+        }
+        interval = setTimeout(run, 10);
+    }
+
+    function run() {
+        cur.tick();
+        interval = setTimeout(run, 10);
+    }
+</script>
 
 </html>
