@@ -57,9 +57,18 @@
     var WIDTH = document.querySelector("#scene").width;
     var tickrate = 1000/60;
     var curobj;
+    var persist = true;
     var next;
-    var runloop, endloop;
-    var oldJS;
+    var runloop;
+
+    class off {
+      tick(persist) {
+        return persist;
+      }
+    }
+
+    curobj = new off();
+    runloop = setTimeout(run, tickrate);
 
     window.addEventListener("resize", function() {
         HEIGHT = document.querySelector("#scene").height;
@@ -67,17 +76,17 @@
     });
 
     function loadJS(file) {
-        if (runloop) {
-            clearTimeout(runloop);
-            endloop = setTimeout(end, tickrate);
-            next = file;
-        } else {
-            setfocus(file);
-            runloop = setTimeout(run, tickrate);
-        }
+        next = file;
+        persist = false;
     }
 
-    function setfocus(file) {
+    // script objects given HEIGHT, WIDTH, and ctx
+    // obj.tick(persist) -> running
+    // persist is false when you want to decay
+    // running is whether there are still things to decay
+    // true -> true
+
+    function newfocus(file) {
         if (curobj) {
             delete curobj;
         }
@@ -89,24 +98,18 @@
                 curobj = new colors();
                 break;
             case "off":
+                curobj = new off();
                 return;
         }
     }
 
     function run() {
-        curobj.grow();
-        curobj.tick();
-        runloop = setTimeout(run, tickrate);
-    }
-
-    function end() {
-        if (!curobj.tick()) {
-            endloop = setTimeout(end, tickrate);
+        if (curobj.tick(persist)) {
+            runloop = setTimeout(run, tickrate);
         } else {
-            setfocus(next);
-            if (next !== "off") {
-                runloop = setTimeout(run, tickrate);
-            }
+            persist = true;
+            newfocus(next);
+            runloop = setTimeout(run, tickrate);
         }
     }
 </script>

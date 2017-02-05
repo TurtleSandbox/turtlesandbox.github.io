@@ -98,13 +98,13 @@ class rain {
         this.splashes = [];
     }
 
-    grow() {
-        if (Math.random() < this.rainchance) {
-            this.droplets.push(new droplet(this.wind, this.grav));
+    physics(persist) {
+        if (persist) {
+            if (Math.random() < this.rainchance) {
+                this.droplets.push(new droplet(this.wind, this.grav));
+            }
         }
-    }
 
-    physics() {
         var i = 0;
         while (i < this.droplets.length) {
             if (this.droplets[i].physics() === 1) {
@@ -126,7 +126,7 @@ class rain {
             }
         }
 
-        return (this.droplets.length + this.splashes.length) <= 0;
+        return persist || ()(this.droplets.length + this.splashes.length) > 0);
     }
 
     draw() {
@@ -147,8 +147,8 @@ class rain {
         }
     }
 
-    tick() {
-        var done = this.physics();
+    tick(persist) {
+        var done = this.physics(persist);
         this.draw();
         return done;
     }
