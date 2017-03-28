@@ -126,7 +126,7 @@ class rain {
             }
         }
 
-        return persist || ()(this.droplets.length + this.splashes.length) > 0);
+        return persist || ((this.droplets.length + this.splashes.length) > 0);
     }
 
     draw() {
