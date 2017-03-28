@@ -44,6 +44,9 @@ function newfocus(file) {
         case "colors.js":
             curobj = new colors();
             break;
+        case "mapGen.js":
+            curobj = new mapGen();
+            break;
         case "off":
             curobj = new off();
             return;
