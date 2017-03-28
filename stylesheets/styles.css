@@ -1,14 +1,13 @@
-@import url("https://fonts.googleapis.com/css?family=Lato:300italic,700italic,300,700|Oxygen");
+@import url("https://fonts.googleapis.com/css?family=Lato:300italic,700italic,300,700");
 
 body {
   padding:50px;
-  font:14px/1.5 Oxygen, sans-serif;
-  color:#777;
+  font:16px/1.5 Lato, sans-serif;
+  color:#555;
   font-weight:300;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: Lato, sans-serif;
   color:#222;
   margin:0 0 10px;
 }
@@ -22,7 +21,7 @@ h1, h2, h3 {
 }
 
 h1 {
-  font-size:36px;
+  font-size:32px;
 }
 
 h2 {
@@ -40,15 +39,8 @@ a {
   text-decoration:none;
 }
 
-a small {
-  font-size:11px;
-  color:#777;
-  margin-top:-0.6em;
-  display:block;
-}
-
 .wrapper {
-  width:860px;
+  width:880px;
   margin:0 auto;
 }
 
@@ -104,6 +96,7 @@ img {
 
 header {
   width:280px;
+  font:15px/1.5 Lato, sans-serif;
   float:left;
 }
 
@@ -166,7 +159,7 @@ header ul a strong {
 }
 
 section {
-  width:500px;
+  width:510px;
   float:right;
 }
 
