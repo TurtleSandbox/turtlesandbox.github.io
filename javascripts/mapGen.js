@@ -2,8 +2,10 @@ class mapGen {
     constructor() {
         this.blocks = [[]];
 
-        this.h = 64;
-        this.w = 64;
+        this.time = 0;
+
+        this.h = 128;
+        this.w = 128;
 
         this.hoff = 0;
         this.woff = 0;
@@ -69,23 +71,28 @@ class mapGen {
     render(x, y) {
         var h = this.blocks[y][x];
 
-
         if (h > 0) {
-            var r = ~~Math.max(250 - (200 * h/30), 50);
-            var g = ~~Math.max(255 - (205 * h/30), 50);
-            var b = ~~Math.max(199 - (149 * h/30), 50);
+            var r = ~~Math.max(255 - (255 * h/64) * (this.time / 5), 0);
+            var g = ~~Math.max(255 - (255 * h/64) * (this.time / 5), 0);
+            var b = ~~Math.max(255 - (255 * h/64) * (this.time / 5), 0);
         } else {
-            var r = ~~Math.max(75  + (h * .75), 0);
-            var g = ~~Math.max(107 + (h * 1), 0);
-            var b = ~~Math.max(204 + (h * 2), 0);
+            var r = 255;
+            var g = 255;
+            var b = 255;
         }
         var color = this.RGB2HTML(r,g,b);
 
         ctx.fillStyle = color;
-        ctx.fillRect(x * 7, y * 7, 7, 7);
+        ctx.fillRect((x * 4) - 6, (y * 4) - 6, 4, 4);
     }
 
     tick(persist) {
+        if (!persist) {
+           this.time = this.time - 1;
+        } else if (this.time < 5) {
+           this.time = this.time + 1;
+        }
+
         ctx.clearRect(0, 0, WIDTH, HEIGHT);
 
         for (var i = 0; i < this.h; i++) {
@@ -93,6 +100,6 @@ class mapGen {
                 this.render(e, i);
             }
         }
-        return persist;
+        return this.time > 0;
     }
 }
