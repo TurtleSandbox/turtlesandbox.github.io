@@ -219,6 +219,14 @@ canvas {
   }
 }
 
+
+#scene {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+}
+
+
 @media print, screen and (max-width: 720px) {
   body {
     word-wrap:break-word;
