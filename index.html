@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Caccavale</title>
+    <link rel="icon" href="32x32.png" sizes="32x32">
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <!--[if lt IE 9]>
+        <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+
+    <script src="javascripts/rain.js"></script>
+    <script src="javascripts/colors.js"></script>
+    <script src="javascripts/mapGen.js"></script>
+    <script src="javascripts/tracking.js"></script>
+    <script src="javascripts/showContacts.js"></script>
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+            <h1><b>Sam Caccavale</b></h1>
+            <img src="mug.JPG" alt="hi" class="inline" /><br/> Find me on &mdash; <span class="clickable" onclick="showContacts('email')">email</span> &mdash; <span class="clickable" onclick="showContacts('github')">github</span><br/>
+            <div id="show"><a href="mailto:samcaccavale@gmail.com">samcaccavale@gmail.com</a><br/></div><br/>
+            <h3>Projects</h3>
+            <a href="https://github.com/caccavale/lightbox">lightbox</a> - a display server and WM<br/>
+            <a href="https://github.com/caccavale/gallery">gallery</a> - a gallery/blog site template<br/>
+            <a href="https://github.com/caccavale/twaiku">twaiku</a> - find haikus from twitter posts<br/>
+            <a href="https://github.com/caccavale/algo">algo</a> - a collection of demos from CS4800<br/>
+        </header>
+        <section>
+            <h2>Welcome</h2>
+            <div>I am a student at Northeastern University, work in cybersecurity, and currently am working on a handful of personal projects. My interests include kernel development, video games, and the visual arts.</div><br/>
+            <div>
+              <span class="clickable" onclick="loadJS('off');">off</span> - <span class="clickable" onclick="loadJS('rain.js');">rain</span> - <span class="clickable" onclick="loadJS('colors.js');">colors</span> - <span class="clickable" onclick="loadJS('mapGen.js');">mapGen</span>
+            </div>
+            <canvas id="scene" height="500" width="500"></canvas>
+        </section>
+    </div>
+    <script src="javascripts/canvasManager.js"></script>
+</body>
+</html>
